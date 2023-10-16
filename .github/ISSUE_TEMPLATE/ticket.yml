@@ -16,7 +16,7 @@ body:
         - "cloud-platform"
         - "security-engineering"
     validations:
-      required: false
+      required: true
   - type: dropdown
     id: organization
     attributes:
