@@ -1,41 +1,83 @@
-name: Bug Report 2
-description: File a bug report
-title: "[Bug]: "
-labels: ["bug", "triage"]
-projects: ["octo-org/1", "octo-org/44"]
-assignees:
-  - octocat
+name: Terraform Spacelift Stack
+description: Create a Terraform Spacelift Stack
+title: "[Stack]: "
+labels: ["stack", "spacelift", "terraform"]
 body:
   - type: markdown
     attributes:
-      value: |
-        Thanks for taking the time to fill out this bug report!
+      value: Use this form to request creation of a Spacelift Stack for a Terraform based deployment.
+  - type: dropdown
+    id: team
+    attributes:
+      label: Team
+      description: Please select your team from the dropdown.
+      multiple: false
+      options:
+        - "cloud-platform"
+        - "security-engineering"
+    validations:
+      required: true
+  - type: dropdown
+    id: organization
+    attributes:
+      label: Organization
+      description: The name of the organization your repository is a part of.
+      multiple: false
+      options:
+        - "AtheneUSA-EMU"
+        - "ath-cloud-platform"
+    validations:
+      required: true
   - type: input
-    id: contact
+    id: repository_name
     attributes:
-      label: Contact Details
-      description: How can we get in touch with you if we need more info?
-      placeholder: ex. email@example.com
+      label: Repository Name
+      description: The name of the repository the stack will deploy from. This value must match the name in GitHub exactly.
+      placeholder: "AWS_Account_Automation"
+    validations:
+      required: true
+  - type: input
+    id: project_root
+    attributes:
+      label: Project Root
+      description: Provide the path within the repository to the folder containing your infrastructure as code files. Defaults to the root of the repository.
+      placeholder: "/infra"
     validations:
       required: false
-  - type: dropdown
-    id: version
+  - type: input
+    id: branch
     attributes:
-      label: Version
-      description: What version of our software are you running?
-      options:
-        - 1.0.2 (Default)
-        - 1.0.3 (Edge)
-      default: 0
+      label: Deployment Branch
+      description: The name of the branch that is used for this stack's deployments.
+      placeholder: "main"
     validations:
-      required: false
+      required: true
   - type: dropdown
-    id: browsers
+    id: environment
     attributes:
-      label: What browsers are you seeing the problem on?
-      multiple: true
+      label: Environment
+      description: Please select the environment of the AWS account you are deploying to.
+      multiple: false
       options:
-        - Firefox
-        - Chrome
-        - Safari
-        - Microsoft Edge
+        - "dev"
+        - "qa"
+        - "stage"
+        - "prod"
+    validations:
+      required: true
+  - type: input
+    id: account_number
+    attributes:
+      label: Account Number
+      description: The AWS account number this Spacelift stack will deploy to.
+      placeholder: "123456789012"
+    validations:
+      required: true
+  - type: input
+    id: terraform_version
+    attributes:
+      label: Terraform Version
+      description: Provide a default version of Terraform that your project requires. Value cannot go higher than 1.5.7.
+      placeholder: "1.5.7"
+    validations:
+      required: true
