@@ -28,7 +28,7 @@ body:
         - 1.0.3 (Edge)
       default: 0
     validations:
-      required: true
+      required: false
   - type: dropdown
     id: browsers
     attributes:
