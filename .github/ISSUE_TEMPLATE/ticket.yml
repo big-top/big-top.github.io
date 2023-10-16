@@ -10,14 +10,32 @@ body:
     attributes:
       value: |
         Thanks for taking the time to fill out this bug report!
-          - type: dropdown
-    id: team
+  - type: input
+    id: contact
     attributes:
-      label: Team
-      description: Please select your team from the dropdown.
-      multiple: false
+      label: Contact Details
+      description: How can we get in touch with you if we need more info?
+      placeholder: ex. email@example.com
+    validations:
+      required: false
+  - type: dropdown
+    id: version
+    attributes:
+      label: Version
+      description: What version of our software are you running?
       options:
-        - "cloud-platform"
-        - "security-engineering"
+        - 1.0.2 (Default)
+        - 1.0.3 (Edge)
+      default: 0
     validations:
       required: true
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: What browsers are you seeing the problem on?
+      multiple: true
+      options:
+        - Firefox
+        - Chrome
+        - Safari
+        - Microsoft Edge
