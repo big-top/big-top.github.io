@@ -1,0 +1,23 @@
+name: Bug Report
+description: File a bug report
+title: "[Bug]: "
+labels: ["bug", "triage"]
+projects: ["octo-org/1", "octo-org/44"]
+assignees:
+  - octocat
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+          - type: dropdown
+    id: team
+    attributes:
+      label: Team
+      description: Please select your team from the dropdown.
+      multiple: false
+      options:
+        - "cloud-platform"
+        - "security-engineering"
+    validations:
+      required: true
